@@ -1,5 +1,7 @@
 import React from 'react';
 
-const App = () => <div>BCH News</div>;
+import News from './News';
+
+const App = () => <News />;
 
 export default App;
