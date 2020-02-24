@@ -10,3 +10,10 @@ export const Container = styled.div`
     width: 100%;
   }
 `;
+
+export const RootContainer = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
