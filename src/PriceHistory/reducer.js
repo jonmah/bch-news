@@ -6,7 +6,7 @@ export default (state = [], action) => {
     case POPULATE:
       return action.data.map(([name, value]) => ({
         name: moment(name).format('MMM-DD'),
-        value
+        value: (value/100).toFixed(2)
       }));
     default:
       return state;
