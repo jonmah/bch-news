@@ -8,7 +8,6 @@ const transform = ({ price }) => ({ price: formatNumber(price) });
 export default (state = initialState, action) => {
   switch (action.type) {
     case POPULATE:
-      console.log(action.data);
       return transform(action.data);
     default:
       return state;
