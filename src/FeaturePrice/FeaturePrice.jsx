@@ -7,9 +7,7 @@ import { populate } from './actions';
 const FeaturePrice = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    return dispatch(populate());
-  }, [dispatch]);
+  useEffect(() => dispatch(populate()), [dispatch]);
 
   const currencyFormatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
