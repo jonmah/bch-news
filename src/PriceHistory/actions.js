@@ -1,4 +1,11 @@
+import { getPriceHistory } from '../api/bitcoin';
+
 const PREFIX = 'PRICE_HISTORY';
-const _ = b => x => `${b}/${x}`;
+const _ = (b) => (x) => `${b}/${x}`;
+
 export const POPULATE = _(PREFIX)('POPULATE');
-export const populate = data => ({ type: POPULATE, data });
+export const populate = () => (dispatch) => {
+  getPriceHistory()
+    .then((data) => dispatch({ type: POPULATE, data }))
+    .catch((e) => console.log(e));
+};

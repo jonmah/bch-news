@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { compose } from 'redux';
 import {
   CartesianGrid,
   Line,
@@ -8,23 +7,20 @@ import {
   ResponsiveContainer,
   Tooltip,
   XAxis,
-  YAxis
+  YAxis,
 } from 'recharts';
 
 import { ButtonGroup } from '../components';
 import { Container } from '../styles/Container';
-import { getPriceHistory } from '../api/bitcoin';
 import { populate } from './actions';
 
 const PriceHistory = () => {
   const dispatch = useDispatch();
   const [timeline, setTimeline] = useState(30);
 
-  useEffect(() => {
-    getPriceHistory().then(compose(dispatch, populate));
-  }, [dispatch]);
+  useEffect(() => dispatch(populate()), [dispatch]);
 
-  const history = useSelector(s => s.priceHistory)
+  const history = useSelector((s) => s.priceHistory)
     .slice(0, timeline)
     .reverse();
 
@@ -38,11 +34,11 @@ const PriceHistory = () => {
           data={history}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <CartesianGrid strokeDasharray='3 3' />
+          <XAxis dataKey='name' />
           <YAxis />
           <Tooltip />
-          <Line type="monotone" dataKey="value" stroke="#8884d8" />
+          <Line type='monotone' dataKey='value' stroke='#8884d8' />
         </LineChart>
       </ResponsiveContainer>
       <ButtonGroup
